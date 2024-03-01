@@ -1,0 +1,71 @@
+---
+title: "Mouchard_Viaur"
+author: "Sylvie"
+date: "2024-03-01"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+load(file="../RData/Analyse_mouchards.RData")
+#load(file="../RData/QT.RData")
+library(flextable)
+library(tidyverse)
+
+```
+
+# Evolution des débits et de la température
+
+
+```{r echo=FALSE}
+plot(Temp_Deb)
+```
+
+## Nombre de poissons detecté par jour
+
+```{r echo=FALSE}
+plot(Nb_poissons)
+```
+
+
+## Fonctionnement des mouchards
+
+Taux de detection des mouchards par jour (100% = 2 detections/heure, toutes les heures de la journée)
+
+```{r echo=FALSE}
+plot(A_riv)
+```
+
+```{r echo=FALSE}
+plot(A_entree)
+```
+
+```{r echo=FALSE}
+plot(A_sortie)
+```
+
+
+
+## Attractivité, Franchissabilité, Efficacité
+
+```{r echo=FALSE}
+head(Effi) %>%
+  flextable::flextable() %>% 
+  theme_booktabs() %>% 
+  autofit() %>% 
+  font(fontname="Rage Italic", part = "all") %>% 
+  colformat_double(j=5:7, digits = 2) %>% 
+  align(align = "center", part ="all")
+```
+
+
+
+## FIN
+
+
